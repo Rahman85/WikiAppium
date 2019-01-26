@@ -2,6 +2,7 @@ package lib.ui.android;
 
 import io.appium.java_client.AppiumDriver;
 import lib.ui.ArticlePageObject;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class AndroidArticlePageobject extends ArticlePageObject
 {
@@ -17,7 +18,7 @@ public class AndroidArticlePageobject extends ArticlePageObject
 
     }
 
-    public AndroidArticlePageobject(AppiumDriver driver)
+    public AndroidArticlePageobject(RemoteWebDriver driver)
     {
 
         super(driver);

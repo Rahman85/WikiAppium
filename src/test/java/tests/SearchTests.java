@@ -1,9 +1,12 @@
 package tests;
 
 import lib.CoreTestCase;
+import lib.Platform;
 import lib.ui.SearchPageObject;
 import lib.ui.factories.SearchPageObjectFactories;
 import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 
 public class SearchTests extends CoreTestCase {
@@ -15,7 +18,7 @@ public class SearchTests extends CoreTestCase {
 
         SearchPageObject.InitSearchInput();
         SearchPageObject.typeSearchLine("Java");
-        SearchPageObject.waitforSearchResult("Object-oriented programming language");
+        SearchPageObject.waitforSearchResult("bject-oriented programming language");
     }
 
 
@@ -24,11 +27,16 @@ public class SearchTests extends CoreTestCase {
         SearchPageObject SearchPageObject = SearchPageObjectFactories.get(driver);
 
         SearchPageObject.InitSearchInput();
-        //SearchPageObject.typeSearchLine("Java");
+        SearchPageObject.typeSearchLine("Java");
         SearchPageObject.waitForCancelButtonToAppear();
         SearchPageObject.clickCancelSearch();
+        { if (Platform.getInstance().isAndroid())
+            return;
         SearchPageObject.waitForCancelButtonToDisappear();
-    }
+        }
+}
+
+
 
 
     @Test
@@ -55,5 +63,6 @@ public class SearchTests extends CoreTestCase {
         SearchPageObject.waitForEmptyResultlabel();
         SearchPageObject.assertThereIsNoResultOfSearch();
     }
+
 
 }
